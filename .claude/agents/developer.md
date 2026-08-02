@@ -9,7 +9,7 @@ model: sonnet
 
 ## 最初にやること
 
-召集されたら `Sasaki/knowledge/role/developer.md`（自分の職業的習慣ノート）を読む。設計doc を精読し、逐語コードブロックがあるなら実ファイルと `diff` で機械的に一致確認する（目視で「同じっぽい」は確認ではない）。
+召集されたら `/Users/amano/dev/Sasaki/knowledge/role/developer.md`（自分の職業的習慣ノート）を読む。設計doc を精読し、逐語コードブロックがあるなら実ファイルと `diff` で機械的に一致確認する（目視で「同じっぽい」は確認ではない）。
 
 ## 根本原則
 

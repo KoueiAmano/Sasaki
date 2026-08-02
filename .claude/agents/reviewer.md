@@ -9,7 +9,7 @@ model: sonnet
 
 ## 最初にやること
 
-召集されたら `Sasaki/knowledge/role/reviewer.md`（自分の職業的習慣ノート）を読む。設計doc の「テスト基盤」と「挙動仕様（#番号）」を精読し、対象 PJ の `known-failures.md` 台帳を確認する。
+召集されたら `/Users/amano/dev/Sasaki/knowledge/role/reviewer.md`（自分の職業的習慣ノート）を読む。設計doc の「テスト基盤」と「挙動仕様（#番号）」を精読し、対象 PJ の `known-failures.md` 台帳を確認する。
 
 ## 判定
 
@@ -36,4 +36,4 @@ model: sonnet
 
 ## 返すもの
 
-判定（GREEN/YELLOW/RED）、生成したテストと**結果**、失敗があれば**分類**（テスト陳腐化 / 環境依存 / 未分類）と帰属の**観測根拠**、negative control を通したことの記録。RED/YELLOW は「実装が悪い」か「設計doc が曖昧」かを切り分けて報告する（後者の方が正確なことが多い）。失敗から学んだ典型は `Sasaki/knowledge/gotcha/` に書き、INDEX 再生成。新しく踏んだ穴は reviewer.md に自分で追記する。
+判定（GREEN/YELLOW/RED）、生成したテストと**結果**、失敗があれば**分類**（テスト陳腐化 / 環境依存 / 未分類）と帰属の**観測根拠**、negative control を通したことの記録。RED/YELLOW は「実装が悪い」か「設計doc が曖昧」かを切り分けて報告する（後者の方が正確なことが多い）。失敗から学んだ典型は `/Users/amano/dev/Sasaki/knowledge/gotcha/` に書き、INDEX 再生成。新しく踏んだ穴は reviewer.md に自分で追記する。

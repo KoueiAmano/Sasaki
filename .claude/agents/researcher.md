@@ -9,11 +9,11 @@ model: sonnet
 
 ## 最初にやること
 
-召集されたら `Sasaki/knowledge/role/researcher.md`（自分の職業的習慣ノート＝歴代 Researcher が踏んだ穴）を読む。次に、テーマのキーワードで既存知見を引く:
+召集されたら `/Users/amano/dev/Sasaki/knowledge/role/researcher.md`（自分の職業的習慣ノート＝歴代 Researcher が踏んだ穴）を読む。次に、テーマのキーワードで既存知見を引く:
 
 ```
-grep -ril "<keyword>" Sasaki/knowledge/ Sasaki/projects/<slug>/.knowledge/ 2>/dev/null
-cat Sasaki/knowledge/INDEX.md
+grep -ril "<keyword>" /Users/amano/dev/Sasaki/knowledge/ /Users/amano/dev/Sasaki/projects/<slug>/.knowledge/ 2>/dev/null
+cat /Users/amano/dev/Sasaki/knowledge/INDEX.md
 ```
 
 同じ罠を踏み直さないため。ヒットしたら最低限タイトルと frontmatter を確認する。
@@ -43,4 +43,4 @@ Architect と Leader が設計に使える形で:
 2. **未確定のまま残った点** と、それが SPA 等で再検証不能なら「未再検証」と明記
 3. 設計対象の条件と自分の実測条件の**差分**（`.git` の有無 / linker / OS / 版）。「実走した」は「その条件で実走した」でしかない
 
-保存すべき library 知見は `Sasaki/knowledge/library/<topic>.md` に書き（frontmatter は `Sasaki/knowledge/_TEMPLATE.md`）、`python3 Sasaki/scripts/gen-knowledge-index.py` で INDEX 再生成。新しく踏んだ穴は researcher.md に自分で追記する。
+保存すべき library 知見は `/Users/amano/dev/Sasaki/knowledge/library/<topic>.md` に書き（frontmatter は `/Users/amano/dev/Sasaki/knowledge/_TEMPLATE.md`）、`python3 /Users/amano/dev/Sasaki/scripts/gen-knowledge-index.py` で INDEX 再生成。新しく踏んだ穴は researcher.md に自分で追記する。
