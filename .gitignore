@@ -1,0 +1,39 @@
+# macOS
+.DS_Store
+
+# 作業用一時ファイル (機密含む)
+.tmp/
+
+# worktree (linked working trees、本体ではない)
+worktrees/
+
+# AI 管理対象の個別プロジェクトは独立 git repo
+# embedded repo として追跡しない。Sasaki が管理するのは _TEMPLATE.md のみ
+projects/*
+!projects/_TEMPLATE.md
+
+# Node.js
+node_modules/
+dist/
+build/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+
+# Local Claude Code 設定で機密が混入しうる場合の防御
+.claude/settings.json
+.claude/settings.local.json
+
+# 環境変数ファイル
+.env
+.env.*
+!.env.example
