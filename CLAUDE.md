@@ -136,25 +136,25 @@ git -C Sasaki/projects/<project> branch -d feature/<slug>
 
 ## 記録の場所と責務
 
-書く前に**どこに置くか**を決める。5 層あり、各層の責務は被らせない。冷たい生ログが成熟して固まっていくほど右へ移る。
+書く前に**どこに置くか**を決める。各層の責務は被らせない。**session はその回の生ログ ＋「今回どこに何を書いたか」の記録**であって、そこから何かが自動で昇格するわけではない。durable な行き先（knowledge / skill / memory）は**内容の種類で選ぶ**（下記）。
 
 | 層 | パス | 読まれ方 | 書く対象 |
 |---|---|---|---|
 | **memory** | `~/.claude/projects/.../memory/` | 全セッション auto-load (context 課金あり) | Amano 本人 / 働き方フィードバック / 進行中状況 / 外部リソース参照 |
 | **session report** | `Sasaki/sessions/<yyyy-mm-dd>-<short-id>.md` | 必要時に grep | そのセッションでの作業記録・課題点・いい点・追加ナレッジ (Leader 担当) |
 | **knowledge** | `Sasaki/knowledge/`, `Sasaki/projects/<slug>/.knowledge/` | grep on-demand (課金なし) | 技術事実 / 設計パターン / ハマり所 / ツールの癖 |
+| **skill** | `~/.claude/skills/<name>/` | 名前で自動起動 | 繰り返す運用手順・操作カタログ (例: デプロイ手順)。手順が安定したら書き、セッションをまたいで育てる |
 | **設計doc** | `Sasaki/projects/<slug>/.designs/<YYYYMMDD>-<feature>.md` | 該当作業時のみ | その機能の設計 (Architect 専任) |
-| **skill** | `~/.claude/skills/<name>/` | 名前で自動起動 | knowledge の中でも**汎用 × 高頻度**の手順を実行可能capabilityに結晶化 |
 
-### 昇格の流れ (session → knowledge → skill)
+### どこに書くか（内容の【種類】で選ぶ）
 
-同じ知見は成熟度に応じて場所を移る。
+session はログ。そこから durable な置き場へは「昇格」でなく**内容の種類で振り分ける**。knowledge・skill・memory は並列で、被らせない。
 
-1. **session** に全部生記録する（あなたの行動 + AIの思考/判断を時系列で。整理しない）
-2. そこから「次も引きたい技術事実」を抽出し、重複排除して **knowledge** に置く（grep で引ける形に）
-3. knowledge の中でも「毎回やる・どのPJでも使う」手順は **skill** に昇格させる（`~/.claude/skills/`）。逆に skill が陳腐化したら knowledge/session に照らして書き換える
+- **事実・罠・パターンを学んだ** → **knowledge**（grep で引ける技術事実。例: gotcha）
+- **繰り返す運用手順が固まった** → **skill**（名前で自動起動する手順書。例: デプロイ。関連する罠は knowledge の gotcha を参照してよい）
+- **個人的事情・進行中の状況** → **memory**（毎回 auto-load。技術事実は書かず pointer に留める）
 
-判断軸は **頻度 × 汎用性**。一回きりの事実は knowledge 止まり。毎回踏む手順は skill。
+★ **skill は knowledge の「昇格版」ではない** — 「手順」と「事実」という別の種類。ある操作を繰り返すと感じたら skill に直接書き、そこで踏む罠は knowledge に置いて skill から参照する（Muraki の `appily` / `cf-tunnel` skill が実例）。
 
 ### 二重化させない
 

@@ -9,7 +9,7 @@ AI 主体で開発を進めるためのオーケストレーション workspace�
 - **Leader が設計を書かない**: 意図理解 → 召集 → 統合判断に専念。設計は Architect、実装は Developer、テストは Reviewer に分離
 - **設計 → 実装 → テストを役割で分離**: Architect が「実装で迷う余地のない」設計doc を書き、Developer は doc から実装し、Reviewer は **コードを見ず** doc だけからテストを生成する
 - **ナレッジを残す**: 失敗・パターン・ツールの癖を `knowledge/` に蓄積。次セッション以降が grep で引ける
-- **知見を昇格させる**: session (生ログ) → knowledge (再利用可能な事実) → skill (汎用×高頻度の手順) と、成熟に応じて置き場を移す
+- **記録は内容の種類で振り分ける**: session (生ログ) から、事実は knowledge・繰り返す運用手順は skill・個人事情は memory へ。被らせない（「昇格」でなく種類で選ぶ）
 - **ライブで書き換える**: 規約・仕様が変わったら**追記でなく置換**。矛盾の蓄積を防ぐ
 
 ## ロール
@@ -57,7 +57,7 @@ Sasaki/
 | **session report** | `Sasaki/sessions/` | 必要時 grep |
 | **knowledge** | `Sasaki/knowledge/`, `<project>/.knowledge/` | grep on-demand |
 | **設計doc** | `<project>/.designs/<YYYYMMDD>-<feature>.md` | 該当作業時のみ |
-| **skill** | `~/.claude/skills/` | 名前で自動起動 (汎用×高頻度の結晶) |
+| **skill** | `~/.claude/skills/` | 名前で自動起動 (繰り返す運用手順のカタログ) |
 
 ## 並列実行 (GitHub Flow + worktree)
 
