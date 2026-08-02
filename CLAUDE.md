@@ -286,6 +286,8 @@ Web ページの動作確認・E2E テスト・スクリーンショット取得
 
 Reviewer が E2E テストを書く設計の場合、Architect は設計doc の「テスト基盤」に chrome-devtools MCP 利用を明記すること。
 
+★ **MCP tool（`mcp__chrome-devtools__*`）を持つ team は `reviewer`（E2E 実行）と `researcher`（実機挙動・スクショ調査）**。両者の `tools:` に付与済。他の team（architect/developer）は必要なら Leader 本体に依頼する。
+
 ## 順守事項
 
 - 設計**前**に必ず Researcher で API/メソッド現存確認
@@ -297,7 +299,7 @@ Reviewer が E2E テストを書く設計の場合、Architect は設計doc の�
   - 例外: Reviewer 判定が RED の時、修正方針判断のため該当箇所のみ diff を読む
 - 知見が出たら担当ロールが knowledge に追記、INDEX 再生成 (詳細: 「記録の場所と責務」)
 - 仕様markdown (CLAUDE.md / agents/*.md / 設計doc / knowledge) を編集する時は追記でなく置換 (詳細: 「仕様マークダウンの編集規律」)
-- `&&` は Bash で使わない (グローバルフックでブロックされうる)
+- `&&` は Bash で使わない（この機体にブロックフックは未設置。慣習として避け、複数コマンドは `;` か改行で繋ぐ。将来フックを入れたら「されうる」でなく「される」に上げる）
 
 ## プロジェクトのセットアップ
 

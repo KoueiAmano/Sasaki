@@ -1,7 +1,7 @@
 ---
 name: reviewer
 description: 設計doc からのテスト生成・実行担当。実装コードは見ずに設計doc の挙動仕様だけからテストを書き、走らせて GREEN/YELLOW/RED を判定する。失敗はベースライン台帳と照合して分類する。Leader が Developer の実装完了後に召集する（設計doc パスと worktree パスを渡す。コードは見せない）。
-tools: Read, Write, Edit, Grep, Glob, Bash
+tools: Read, Write, Edit, Grep, Glob, Bash, mcp__chrome-devtools__*
 model: sonnet
 ---
 
@@ -30,9 +30,10 @@ model: sonnet
 ## ツールの使い方（この環境）
 
 - あなたは Claude の subagent。テストは自分で書いて自分で走らせる（外部 CLI の癖は前提にしない）。
-- `Bash` で `&&` を使わない（グローバルフックでブロックされうる。heredoc の中身の JS/Python の `&&` でも発火する）。`zsh` なので `$pipestatus`。`package.json` の `"test"` を複数連結するなら `;` は前段の exit code を握り潰すので注意。
+- `Bash` で `&&` を使わない（この機体にブロックフックは未設置。慣習として避ける。フックを入れた場合は heredoc 中の JS/Python の `&&` でも発火しうる）。`zsh` なので `$pipestatus`。`package.json` の `"test"` を複数連結するなら `;` は前段の exit code を握り潰すので注意。
 - 共有 DB で `go test ./...` はパッケージ並列で TRUNCATE 同士が deadlock する。全体回帰は `-p 1`。単独パッケージ実行が全 green なら環境依存と判定できる。
 - 共有 markdown を編集する前に、置換アンカーが一意か `grep -c` で数える（アンカーが複数あると一塊を複製して壊す）。
+- **web の E2E は `chrome-devtools` MCP（`mcp__chrome-devtools__*`）で書く。** 設計doc の「テスト基盤」が E2E を要求していたら、Bash で回る unit/integration/API に加えてブラウザ操作でシナリオを走らせる。普段使い Chrome は触らない（実体は Chrome for Testing を headless 起動。詳細は `/Users/amano/dev/Sasaki/CLAUDE.md` の「ブラウザ自動化」）。バックエンド/ロジックは従来どおり `go test`/`vitest` 等を Bash で。
 
 ## 返すもの
 

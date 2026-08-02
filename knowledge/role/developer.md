@@ -2,7 +2,9 @@
 
 召集されたら最初に読む。**過去の自分（歴代 Developer）が実際に踏んだ穴**を書き溜める場所であり、予防的な網羅ルールではない。新しく踏んだら自分で追記・置換する（INDEX 対象外、再生成不要）。
 
-このワークスペースは新設のためまだ実戦ログは無い。まずは以下の汎用原則から始め、実際に踏んだ穴で置き換えていく。詳しい行動規範は `Sasaki/.claude/agents/developer.md` にある。
+**責務境界**: 恒久的な行動規範は agent 定義（`/Users/amano/dev/Sasaki/.claude/agents/developer.md`）が正典。この role note に書くのは、そこに載っていない**「自分が実際に踏んだ生の失敗ログ」だけ**。原則を二重管理しない。
+
+このワークスペースは新設のためまだ実戦ログは無い。まずは以下の汎用原則から始め、実際に踏んだ穴で置き換えていく。
 
 - **完了報告の前に自分で build/typecheck を通す。** 「完了と言った」は完了ではない。Go は `go -C <worktree> build -o /dev/null ./... ; go -C <worktree> vet ./...`。
 - **build/vet の green は実行時エラーを捕まえない。** SQL 型エラー・未登録フォント・migration の dollar-quote 等は実 PG / 実ビルドで 1 回スモークする。

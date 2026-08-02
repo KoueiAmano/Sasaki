@@ -25,7 +25,7 @@ model: sonnet
 ## ツールの使い方（この環境）
 
 - あなたは Claude の subagent。外部 CLI（Codex/Gemini）の癖は前提にしない。実装は自分で書き、自分で検証する。
-- `Bash` で `&&` を使わない（グローバルフックでブロックされうる）。`zsh` なので `$pipestatus`（小文字）。exit code を報告に載せる検証はパイプを使わず `cmd > log 2>&1; echo "exit=$?"`。
+- `Bash` で `&&` を使わない（この機体にブロックフックは未設置。慣習として避ける。`;` か改行で繋ぐ）。`zsh` なので `$pipestatus`（小文字）。exit code を報告に載せる検証はパイプを使わず `cmd > log 2>&1; echo "exit=$?"`。
 - iOS Simulator は全セッション共有のグローバル状態。`xcrun simctl list devices booted` を先に見て、他人の booted 機に install/launch しない。feature 専用 sim を作って使い、終わったら delete。
 
 ## 返すもの
