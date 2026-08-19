@@ -31,6 +31,7 @@ Sasaki/
 ├── CLAUDE.md                       # 組織規約 (Claude Code が auto-load)
 ├── README.md                       # この本
 ├── .claude/agents/<role>.md        # subagent 定義 4 体
+├── global/CLAUDE.md                # グローバル規約の原本 (~/.claude/CLAUDE.md に配置する)
 ├── knowledge/                      # クロスプロジェクト知見
 │   ├── INDEX.md                    # 自動生成
 │   ├── library/                    # ライブラリ・API知見
@@ -46,6 +47,33 @@ Sasaki/
 │   └── gen-knowledge-index.py
 └── worktrees/                      # 並列作業用 git worktree (gitignore)
 ```
+
+## 新しい開発環境で使う
+
+clone しただけでは動かない。Sasaki は `~/.claude/` 配下から Claude Code に読ませる作りなので、**repo 外の 3 点を、そのマシンの clone 先パスに合わせて繋ぎ直す**必要がある。
+
+Claude Code に「Sasaki を clone した、使えるようにして」と言えば、この節を読んで実行できる。
+
+1. **グローバル規約**: `global/CLAUDE.md` を `~/.claude/CLAUDE.md` に置く。これが「どのディレクトリでも Sasaki の Leader として動く」常駐設定の本体
+2. **団員定義**: `.claude/agents/*.md` を `~/.claude/agents/` に symlink する (clone 先の絶対パスで)
+3. **MCP 設定**: `.mcp.json` の `command` を、clone 先の `scripts/chrome-devtools-mcp.sh` の絶対パスに書き換える
+
+### 原本マシンと副環境で置き方が違う
+
+`global/CLAUDE.md` と `.mcp.json` は**絶対パスを埋め込む**方針 (団員をグローバル召集するため)。そのため配置方法を分ける:
+
+| | 置き方 | 理由 |
+|---|---|---|
+| **原本マシン** (clone 先 = `/Users/amano/dev/Sasaki`) | symlink | repo が唯一の正。編集が即反映され drift しない |
+| **副環境** (インターン先 PC 等) | copy して絶対パスを書き換え | パスが違うので symlink だと成立しない |
+
+副環境で規約を編集したら、repo にコミットして原本マシンへ持ち帰る。
+
+### 別途必要なもの (repo では賄えない)
+
+- **SSH 鍵**: 各マシンで生成し GitHub に登録する
+- **`projects/<slug>/`**: .gitignore 除外 (各 PJ は独立 repo)。必要な PJ は個別に clone する
+- **skills**: `~/.claude/skills/` は Sasaki の管理外
 
 ## 記録の場所と責務
 

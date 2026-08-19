@@ -25,6 +25,7 @@ Sasaki/                                              # git repo (Amano の自律
 ├── README.md                                        # workspace 全体説明
 ├── .gitignore                                       # .tmp/, worktrees/, 各 PJ 等を除外
 ├── .claude/agents/<role>.md                         # subagent 定義 (researcher/architect/developer/reviewer)
+├── global/CLAUDE.md                                 # グローバル規約の原本 (~/.claude/CLAUDE.md に配置)
 ├── knowledge/                                       # クロスプロジェクト知見
 │   ├── INDEX.md                                     # 自動生成
 │   ├── {library,pattern,gotcha,tool-quirk}/<topic>.md
@@ -329,6 +330,6 @@ Sasaki ルート自体が git repo。`Sasaki/.gitignore` で以下を除外:
 - `projects/<slug>/` — 各 PJ は独立 GitHub repo。embedded repo として track せず、PJ 側で管理
 - `.DS_Store`, `node_modules/`, `dist/`, `build/`, `*.log`, `.env*` 等の defensive 除外
 
-**例外として track する**: `projects/_TEMPLATE.md`, `.claude/agents/`（団員の定義はワークスペースの資産）
+**例外として track する**: `projects/_TEMPLATE.md`, `.claude/agents/`（団員の定義はワークスペースの資産）, `global/CLAUDE.md`（`~/.claude/CLAUDE.md` の原本。repo 外にあると別マシンで復元できない）
 
 各 PJ の `.gitignore` に worktree 経路を防ぐ記述は不要 (worktree は Sasaki ルート下の別パス)。
