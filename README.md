@@ -32,6 +32,7 @@ Sasaki/
 ├── README.md                       # この本
 ├── .claude/agents/<role>.md        # subagent 定義 4 体
 ├── global/CLAUDE.md                # グローバル規約の原本 (~/.claude/CLAUDE.md に配置する)
+├── global/portable-prompt.md       # 機械を持ち込めない環境用の起動プロンプト
 ├── knowledge/                      # クロスプロジェクト知見
 │   ├── INDEX.md                    # 自動生成
 │   ├── library/                    # ライブラリ・API知見
